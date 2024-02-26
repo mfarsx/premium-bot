@@ -12,7 +12,8 @@ async function messageCommandHandler(msg) {
   const parsed = parseCommand(msg);
   if (!parsed) return;
 
-  isAuthorBotOwner(msg);
+  const authorCheck = await isAuthorBotOwner(msg);
+  if (!authorCheck) return;
 
   const { commandName, args } = parsed;
   const command = commandForName[commandName];
@@ -23,7 +24,7 @@ async function messageCommandHandler(msg) {
     await command.execute(msg, args);
   } catch (err) {
     console.error("An error occurred while running the command:", err);
-    return createChannelMessage(
+    await createChannelMessage(
       msg,
       "An error occurred, please try again later."
     );
