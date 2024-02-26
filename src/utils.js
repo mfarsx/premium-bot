@@ -10,9 +10,9 @@ const parseCommand = (msg, PREFIX) => {
   return { commandName, args: parts };
 };
 
-const isAuthorBotOwner = async (msg, BOT_OWNER_ID) => {
+const isAuthorBotOwner = (msg, BOT_OWNER_ID) => {
   if (msg.author.id !== BOT_OWNER_ID) {
-    await createChannelMessage(
+    createChannelMessage(
       msg,
       "Only the owner of the bot can use this command."
     );
@@ -22,12 +22,16 @@ const isAuthorBotOwner = async (msg, BOT_OWNER_ID) => {
 };
 
 const isValidCommand = (msg, command) => {
-  if (!msg.channel.guild) {
-    createChannelMessage(msg, "Commands can only be used in a guild.");
-    return false;
-  }
   if (!command) {
     createChannelMessage(msg, "Command not found.");
+    return false;
+  }
+  return true;
+};
+
+const isValidGuild = (msg) => {
+  if (!msg.channel.guild) {
+    createChannelMessage(msg, "Commands can only be used in a guild.");
     return false;
   }
   return true;
@@ -69,4 +73,5 @@ module.exports = {
   getMessageDetails,
   isAmountValid,
   isUserInGuild,
+  isValidGuild,
 };
