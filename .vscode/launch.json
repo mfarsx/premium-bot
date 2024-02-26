@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Bot",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/src/bot.js",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Config",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/config/config.js",
+      "console": "integratedTerminal"
+    }
+  ]
+}
