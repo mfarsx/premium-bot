@@ -16,6 +16,13 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/config/config.js",
       "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via NPM - Test",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "test"]
     }
   ]
 }
