@@ -1,13 +1,8 @@
-require("dotenv").config({ path: "./config/.env" });
-
-const PREFIX = process.env.PREFIX;
-const BOT_OWNER_ID = process.env.BOT_OWNER_ID;
-
 const createChannelMessage = async (msg, text) => {
   await msg.channel.createMessage(text);
 };
 
-const parseCommand = (msg) => {
+const parseCommand = (msg, PREFIX) => {
   if (!msg.content.startsWith(PREFIX)) return null;
 
   const parts = msg.content.slice(PREFIX.length).trim().split(/\s+/);
@@ -15,7 +10,7 @@ const parseCommand = (msg) => {
   return { commandName, args: parts };
 };
 
-const isAuthorBotOwner = async (msg) => {
+const isAuthorBotOwner = async (msg, BOT_OWNER_ID) => {
   if (msg.author.id !== BOT_OWNER_ID) {
     await createChannelMessage(
       msg,
