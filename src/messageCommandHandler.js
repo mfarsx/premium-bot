@@ -4,12 +4,13 @@ const {
   isValidCommand,
   isAuthorBotOwner,
   createChannelMessage,
+  isValidGuild,
 } = require("./utils");
 
 const { PREFIX, BOT_OWNER_ID } = require("../config/config");
 
 async function messageCommandHandler(msg) {
-  if (!msg.channel.guild) return;
+  if (!isValidGuild(msg)) return;
 
   const parsed = parseCommand(msg, PREFIX);
   if (!parsed) return;
