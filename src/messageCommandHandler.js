@@ -6,13 +6,15 @@ const {
   createChannelMessage,
 } = require("./utils");
 
+const { PREFIX, BOT_OWNER_ID } = require("../config/config");
+
 async function messageCommandHandler(msg) {
   if (!msg.channel.guild) return;
 
-  const parsed = parseCommand(msg);
+  const parsed = parseCommand(msg, PREFIX);
   if (!parsed) return;
 
-  const authorCheck = await isAuthorBotOwner(msg);
+  const authorCheck = await isAuthorBotOwner(msg, BOT_OWNER_ID);
   if (!authorCheck) return;
 
   const { commandName, args } = parsed;
