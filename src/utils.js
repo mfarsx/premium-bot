@@ -1,4 +1,7 @@
-const { PREFIX, BOT_OWNER_ID } = require("../config/config");
+require("dotenv").config({ path: "./config/.env" });
+
+const PREFIX = process.env.PREFIX;
+const BOT_OWNER_ID = process.env.BOT_OWNER_ID;
 
 const createChannelMessage = async (msg, text) => {
   await msg.channel.createMessage(text);
