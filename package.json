@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node src/bot.js"
   },
   "keywords": [],
@@ -15,5 +15,8 @@
     "dotenv": "^16.4.5",
     "eris": "^0.17.2",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
