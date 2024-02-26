@@ -11,6 +11,15 @@ describe("parseCommand function", () => {
     });
   });
 
+  test("should correctly handle commands with empty arguments", () => {
+    const msg = { content: `${PREFIX}test ` };
+    const result = parseCommand(msg);
+    expect(result).toEqual({
+      commandName: "test",
+      args: [],
+    });
+  });
+
   test("should return null for non-command messages", () => {
     const msg = { content: "This is not a command" };
     const result = parseCommand(msg);
