@@ -1,6 +1,8 @@
 const { updateMemberRoleForDonation } = require("./roles");
 const { getMessageDetails, createChannelMessage } = require("./utils");
 
+const { PREMIUM_CUTOFF } = require("../config/config");
+
 const commandForName = {};
 
 commandForName["addpayment"] = {
@@ -13,7 +15,7 @@ commandForName["addpayment"] = {
 
     await Promise.all([
       createChannelMessage(msg, `${mention} paid $${amount}`),
-      updateMemberRoleForDonation(guild, member, amount),
+      updateMemberRoleForDonation(guild, member, amount, PREMIUM_CUTOFF),
     ]);
   },
 };
