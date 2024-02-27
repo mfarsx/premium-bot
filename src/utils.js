@@ -74,4 +74,5 @@ module.exports = {
   isAmountValid,
   isUserInGuild,
   isValidGuild,
+  extractUserId,
 };
