@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node src/bot.js",
     "test": "jest",
-    "start": "node src/bot.js"
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
