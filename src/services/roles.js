@@ -1,6 +1,6 @@
 const premiumRole = {
   name: "Premium Member",
-  color: 0x6aa84f,
+  color: "GREEN",
   hoist: true,
 };
 
@@ -19,17 +19,22 @@ async function updateMemberRoleForDonation(
     return;
   }
 
-  let role = Array.from(guild.roles.values()).find(
-    (role) => role.name === premiumRole.name
-  );
+  let role = guild.roles.cache.find((role) => role.name === premiumRole.name);
 
   if (!role) {
-    role = await guild.createRole(premiumRole).catch(console.error);
+    role = await guild.roles
+      .create({
+        name: premiumRole.name,
+        color: premiumRole.color,
+        hoist: premiumRole.hoist,
+        reason: "Premium member role creation",
+      })
+      .catch(console.error);
   }
 
   if (role) {
-    await member
-      .addRole(role.id, `Donated ${PREMIUM_CUTOFF} or more.`)
+    await member.roles
+      .add(role, `Donated ${PREMIUM_CUTOFF} or more.`)
       .catch(console.error);
   }
 }

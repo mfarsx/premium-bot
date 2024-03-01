@@ -15,7 +15,7 @@ function onMessageCreate(message) {
 }
 
 function registerEventHandlers(bot) {
-  bot.on("ready", onReady);
+  bot.once("ready", onReady);
   bot.on("error", onError);
   bot.on("messageCreate", onMessageCreate);
 }

@@ -1,23 +1,27 @@
 const sendChannelMessage = async (message, content) => {
-  await message.channel.createMessage(content);
+  await message.channel.send(content);
 };
 
 const getUserIdFromMention = (mention) => {
-  return mention.replace(/<@!?(.*?)>/, "$1");
+  const matches = mention.match(/^<@!?(\d+)>$/);
+  if (!matches) return null;
+  const userId = matches[1];
+  return userId;
 };
 
 const extractDetailsFromMessage = (message, parameters) => {
   const [userMention, rawDonationAmount] = parameters;
-  const donationAmount = parseFloat(rawDonationAmount);
+  const donationAmount = parseFloat(rawDonationAmount).toFixed(2);
   const userId = getUserIdFromMention(userMention);
-  const member = message.channel.guild.members.get(userId);
-  const guild = message.channel.guild;
+
+  const member = message.guild.members.cache.get(userId);
+  const guild = message.guild;
 
   return {
     member,
     userId,
     guild,
-    donationAmount: donationAmount.toFixed(2),
+    donationAmount,
     userMention,
   };
 };
