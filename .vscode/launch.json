@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Launch Bot",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/src/bot/botInitializer.js",
+      "program": "${workspaceFolder}/src/app",
       "console": "internalConsole"
     },
     {

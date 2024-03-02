@@ -5,7 +5,7 @@ const {
   checkIsContentStartWithPrefix,
 } = require("../utils/validationUtils");
 const { extractCommandFromMessage } = require("../utils/commandUtils");
-const { PREFIX, BOT_OWNER_ID } = require("../../config/config");
+const { PREFIX, BOT_OWNER_ID } = require("../../../config/config");
 const { commandFactory } = require("../commands/commandFactory");
 
 async function messageHandler(message) {

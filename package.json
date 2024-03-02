@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/bot/botInitializer",
+    "dev": "nodemon src/app",
     "start": "node src/bot/botInitializer",
     "test": "jest",
     "test:coverage": "jest --coverage"

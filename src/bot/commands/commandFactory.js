@@ -1,6 +1,6 @@
 const createAddPaymentCommand = require("./addPayment");
 
-const { PREMIUM_CUTOFF } = require("../../config/config");
+const { PREMIUM_CUTOFF } = require("../../../config/config");
 
 const validCommands = new Set(["addpayment"]);
 

@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-const { registerEventHandlers } = require("../handlers/eventHandler");
-const { BOT_TOKEN } = require("../../config/config");
+const {
+  registerEventHandlers,
+} = require("./eventHandlers/registerEventHandlers");
 
 const bot = new Client({
   intents: [
@@ -12,4 +13,4 @@ const bot = new Client({
 
 registerEventHandlers(bot);
 
-bot.login(BOT_TOKEN);
+module.exports = { bot };
